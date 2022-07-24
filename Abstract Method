@@ -1,0 +1,117 @@
+Figure.java
+#####################
+package AbstractDemo1;
+
+abstract public class Figure {
+	// above we are using Abstract Class
+	private int dimension1; // instance variable
+	private int dimension2;
+	
+	
+	public Figure() {
+		// Above here is the Default Constructor
+		//As we implement our own custom constructor, Java has stopped to provide Default constructor
+		//Hence we have implemented above  the Default Constructor,
+		
+		System.out.println("Figure class constructer");
+	}
+	
+	public Figure(int dimension1, int dimension2) {
+		// Above here is the Parameterized constructor
+		super();
+		this.dimension1 = dimension1;
+		this.dimension2 = dimension2;
+	}
+	
+	public void display() {
+		System.out.println(dimension1+","+dimension2);
+	}
+  
+  ************************************************************************
+  MethodOverriding.java
+  ##############
+  package AbstractDemo1;
+
+public class MethodOverriding {
+
+	public static void main(String[] args) {
+	     // We have a requirement that Figure class should be the parent class of all real/specific class and
+		 // It should hold common properties & methods of Child classes,
+		
+		 // But we don't want anyone to instantiate (making object) it
+		 //We also don't want anyone to call its own area() method
+		
+		Figure fig;
+		fig = new Rectangle(10,8); 
+		System.out.println(fig.area()); // Figure class area
+		
+		// Method Overriding is taken place below & above
+		
+		fig = new Triangle(20,13); // Triangle  class area
+		System.out.println(fig.area());
+		
+		
+
+	}
+
+}
+**********************************************************
+Rectangle.java
+#############
+package AbstractDemo1;
+
+public  class Rectangle extends Figure{
+	
+	
+	public Rectangle() {
+		//System.out.println("Rectangle class constructor");
+		super();
+	}
+	
+	// Child class inherits methods & variables from parent class
+	// But it cannot inherit Constructor from Parent class, but it can call it
+    // "Super" indicate the Parent Class, 
+    // "Super" came in "Inheritance"
+	   
+	
+	public Rectangle(int length, int width) {
+    	 super(length, width); // In order to call Parent class Constructor Child class should use "Super" keyword,
+	}	   
+   
+	@Override // It tells us a method in Child class is overriding the method in parent class
+	// We have hidden the implementation
+	public  int area() {
+		System.out.println("R area");
+		 return getDimension1() * getDimension2();
+	 }
+	
+	
+  }
+*******************************************************
+Triangle.java
+###########
+
+package AbstractDemo1;
+
+public class Triangle extends Figure {
+
+	public Triangle() {
+		
+		super();
+		}
+		
+		public Triangle(int base, int height) {
+		  super(base, height);
+	    }
+		
+		@Override // It tells us a method in Child class is overriding the method in parent class
+		public  int area() {
+			 return ( getDimension1() * getDimension2())/2;
+		 }
+     
+}
+	
+
+
+
+
