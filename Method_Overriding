@@ -1,0 +1,134 @@
+Figure_Class-----
+-------------------------------------------
+package MethodOverriding;
+
+public class Figure {
+	
+	private int dimension1;// instance variable
+	private int dimension2;
+	
+	
+	public Figure() {
+		// Above here is the Default Constructor
+		//As we implement our own custom constructor, Java has stopped to provide Default constructor
+		//Hence we have implemented above  the Default Constructor,
+		
+		System.out.println("Figure class constructer");
+	}
+	
+	public Figure(int dimension1, int dimension2) {
+		// Above here is the Parameterized constructor
+		super();
+		this.dimension1 = dimension1;
+		this.dimension2 = dimension2;
+	}
+	
+	public void display() {
+		System.out.println(dimension1+","+dimension2);
+	}
+	
+	public int area() {
+		return dimension1 * dimension2;// this area() method is accessible in everywhere
+	}
+
+	// We have generated two Getters & Setters
+	
+	public int getDimension1() {
+		return dimension1;
+	}
+
+	public int getDimension2() {
+		return dimension2;
+	}
+
+}
+******************************************
+Method Overloadding
+_______________
+package MethodOverriding;
+
+public class MethodOverriding {
+
+	public static void main(String[] args) {
+		
+		//Concept=>Parent class Reference can hold Child class Object;
+		//i.e Figure fig; Hence,we can also write, fig = new Rectangle(10,14);
+		
+		
+		Figure fig;
+		fig = new Rectangle(10,8); 
+		System.out.println(fig.area()); // Figure class area
+		
+		// Method Overriding is taken place below & above
+		
+		fig = new Triangle(20,13); // Triangle  class area
+		System.out.println(fig.area());
+		
+		
+
+	}
+
+}
+
+***********************************************************************************************
+Rectangle Class---
+__________________________
+package MethodOverriding;
+
+public class Rectangle extends Figure{
+	
+	
+	public Rectangle() {
+		
+		//System.out.println("Rectangle class constructor");
+		super();
+	}
+	
+	// Child class inherits methods & variables from parent class
+	// But it cannot inherit Constructor from Parent class, but it can call it
+    // "Super" indicate the Parent Class, 
+    // "Super" came in "Inheritance"
+	   
+	
+	public Rectangle(int length, int width) {
+    	 super(length, width); // In order to call Parent class Constructor Child class should use "Super" keyword,
+	}	   
+   
+	public void hi() {
+		
+		
+	}
+******************************************************************************************************************
+Triangle class--
+___________________________
+package MethodOverriding;
+
+public class Triangle extends Figure {
+
+	public Triangle() {
+		
+		super();
+		}
+		
+		public Triangle(int base, int height) {
+		  super(base, height);
+	    }
+		
+	@Override // It tells us a method in Child class is overriding the method in parent class
+	public  int area() {
+		 return ( getDimension1() * getDimension2())/2;
+	 }
+     
+}
+
+
+
+
+
+
+
+
+
+
+
+
