@@ -1,0 +1,119 @@
+package SuperMethod;
+
+public class DefaultConstructor {
+
+	public static void main(String[] args) {
+		
+		Rectangle r= new Rectangle();
+		
+		
+		r.display();
+	
+
+	}
+
+}
+______________________________________________________________________________
+package SuperMethod;
+
+public class Figure {
+	
+	private int dimension1;// instance variable
+	private int dimension2;
+	
+	
+	public Figure() {
+		//As we implement our own custom constructer, Java has stopped to provide Default constructor
+		//Hence we have implemented above  the Default Constructer,
+		
+		System.out.println("Figure class constructer");
+	}
+	
+	public Figure(int dimension1, int dimension2) {
+		super();
+		this.dimension1 = dimension1;
+		this.dimension2 = dimension2;
+	}
+	
+	public void display() {
+		System.out.println("\n Dimension1: " + dimension1);
+		System.out.println("\n Dimension2: "+  dimension2);
+	}
+
+}
+__________________________________________________________________________________
+
+package SuperMethod;
+
+public class Rectangle extends Figure{
+	
+	
+	public Rectangle() {
+		
+		//System.out.println("Rectangle class constructer");
+		super();
+	}
+	
+	// Child class inherits methods & variables from parent class
+	// But it cannot inherit Constructor from Parent class, but it can call it
+    // "Super" indicate the Parent Class, 
+    // "Super" came in "Inheritance"
+	   
+	
+	public Rectangle(int length, int width) {
+    	   
+     super(length, width); // In order to call Parent class Constructor Child class should use "Super" keyword,
+	}	   
+    public void display() {
+    	super.display(); // parent class display() method is called by help of "super" keyword
+    	System.out.println("Rectangle class display method is called");
+    }
+
+________________________________________________________________________________________________
+ackage SuperMethod;
+
+public class SuperDemo {
+
+	public static void main(String[] args) {
+		
+		Figure Fg= new Figure(10,20);
+		Fg.display();
+		
+		Rectangle r= new Rectangle(23,34);
+		r.display();
+		
+		Triangle t=new Triangle(25,45);
+		t.display();
+	}
+
+}
+_________________________________________________________________________________________________________________________________
+
+package SuperMethod;
+
+public class Triangle  extends Figure{
+
+	public Triangle(int base, int height) {
+		 
+		// Calling Parent Class Constructer by th use of "Super" keyword
+		super(base, height);
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
